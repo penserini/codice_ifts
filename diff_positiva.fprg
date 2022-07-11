@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="elpen"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2021-10-25 11:02:35 "/>
+        <attribute name="created" value="ZWxwZW47REVTS1RPUC1UQUhNR1BIOzIwMjEtMTAtMjU7IjEwOjUzOjUwICI7MjgxOA=="/>
+        <attribute name="edited" value="ZWxwZW47REVTS1RPUC1UQUhNR1BIOzIwMjEtMTAtMjU7IjExOjAyOjM1ICI7MzsyOTI2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="A" type="Integer" array="False" size=""/>
+            <declare name="B" type="Integer" array="False" size=""/>
+            <declare name="Diff" type="Integer" array="False" size=""/>
+            <input variable="A"/>
+            <input variable="B"/>
+            <if expression="A&gt;B">
+                <then>
+                    <assign variable="Diff" expression="A-B"/>
+                </then>
+                <else>
+                    <assign variable="Diff" expression="B-A"/>
+                </else>
+            </if>
+            <output expression="&quot;La differenza e'&quot; &amp;Diff" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
