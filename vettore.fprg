@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="elpen"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-07-22 08:29:27 "/>
+        <attribute name="created" value="ZWxwZW47REVTS1RPUC1UQUhNR1BIOzIwMjItMDctMjE7IjA5OjMxOjA3ICI7MjgyNw=="/>
+        <attribute name="edited" value="ZWxwZW47REVTS1RPUC1UQUhNR1BIOzIwMjItMDctMjI7IjA4OjI5OjI3ICI7NzsyOTUw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="ordini, i" type="Integer" array="False" size=""/>
+            <declare name="pu" type="Real" array="False" size=""/>
+            <output expression="&quot;Specifica il numero di ordini per un articolo: &quot;" newline="False"/>
+            <input variable="ordini"/>
+            <output expression="&quot;Inserisci il prezzo-unitario: &quot;" newline="False"/>
+            <input variable="pu"/>
+            <declare name="qVett" type="Integer" array="True" size="ordini"/>
+            <declare name="pVett" type="Real" array="True" size="ordini"/>
+            <call expression="CaricaqVett(qVett)"/>
+            <call expression="CalcolapVett(qVett,pVett,pu)"/>
+            <call expression="StampapVett(pVett)"/>
+        </body>
+    </function>
+    <function name="CalcolapVett" type="None" variable="">
+        <parameters>
+            <parameter name="qVett" type="Integer" array="True"/>
+            <parameter name="pVett" type="Real" array="True"/>
+            <parameter name="pu" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="size(pVett)-1" direction="inc" step="1">
+                <if expression="qVett[i] &gt; 10 &amp;&amp; qVett[i] &lt;= 20">
+                    <then>
+                        <assign variable="pVett[i]" expression="qVett[i]*pu*0.95"/>
+                    </then>
+                    <else>
+                        <if expression="qVett[i] &gt; 20">
+                            <then>
+                                <assign variable="pVett[i]" expression="qVett[i]*pu*0.9"/>
+                            </then>
+                            <else>
+                                <assign variable="pVett[i]" expression="qVett[i]*pu"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="CaricaqVett" type="None" variable="">
+        <parameters>
+            <parameter name="qVett" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="size(qVett)-1" direction="inc" step="1">
+                <output expression="&quot;Inserisci quantit&#224; per ordine n&#176; &quot;&amp;(i+1)&amp;&quot;: &quot;" newline="False"/>
+                <input variable="qVett[i]"/>
+            </for>
+        </body>
+    </function>
+    <function name="StampapVett" type="None" variable="">
+        <parameters>
+            <parameter name="pVett" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="size(pVett)-1" direction="inc" step="1">
+                <output expression="&quot;Prezzo ordine n&#176; &quot;&amp;(i+1)&amp;&quot;: &quot;&amp;pVett[i]" newline="True"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
